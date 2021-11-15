@@ -86,7 +86,7 @@ public class TestManejpPersona {
                 Persona personaEliminada = new Persona(reg);
                 personaDao.eliminar(personaEliminada);                              
                 //Limpia pantalla
-                clearScreen();
+                //clearScreen();
                 
                     System.out.println("1 Registro eliminado");
                 
@@ -105,11 +105,17 @@ public class TestManejpPersona {
             break;
             
             case 3:                
+                
+                List<Persona> personasToUpdate = personaDao.seleccionar();//Listado de Personas
+                personasToUpdate.forEach(persona->{
+                    System.out.println(" Persona : "+persona );   
+                }                
+                );
                             //Actualizar un registro
                 System.out.println("Registro a editar : ");
                 reg=Integer.parseInt(leer.nextLine());
                 
-                System.out.print("     Registro : "+reg);
+                System.out.println("     Registro : "+reg);
                 System.out.println(" Nombre : ");
                 String nombre = leer.nextLine();
                 System.out.println(" Apellido : ");
@@ -124,6 +130,11 @@ public class TestManejpPersona {
                 personaDao.actualizar(personaEditada);
                 
                 System.out.println("Registro Actualizado ! ");
+                
+                List<Persona> personasActualizadas = personaDao.seleccionar();//Listado de Personas
+                personasActualizadas.forEach(persona->{
+                    System.out.println("Persona : "+persona);
+                });
                 
                 }catch(Exception ex){
                     
